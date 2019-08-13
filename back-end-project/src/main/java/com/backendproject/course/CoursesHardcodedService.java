@@ -22,5 +22,36 @@ public class CoursesHardcodedService {
 	public List<Course> findAll() {
 		return courses;
 	}
+	
+	public Course deleteById(long id) {
+		Course course = findById(id);
+		if (course == null)
+		return null;
+		if (courses.remove(course)) {
+		return course;
+		}
+		return null;
+	}
+	
+	public Course findById(long id) {
+		for (Course course : courses) {
+			if (course.getId() == id) {
+				return course;
+			}
+		}
+
+		return null;
+	}
+	
+	public Course save(Course course) {
+		if (course.getId() == -1 || course.getId() == 0) {
+			course.setId(++idCounter);
+			courses.add(course);
+		} else {
+			deleteById(course.getId());
+			courses.add(course);
+		}
+		return course;
+	}
 
 }

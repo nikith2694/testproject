@@ -104,4 +104,4 @@ class CourseComponent extends Component {
     }
 }
 
-export default CourseComponent
+export default CourseComponent 
